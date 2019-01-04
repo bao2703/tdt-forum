@@ -10,6 +10,8 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.static(join(__dirname, 'public')));
 
+app.get('/', (_, res) => res.redirect('/graphql'));
+
 apollo.applyMiddleware({ app });
 
 export default app;
