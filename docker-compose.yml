@@ -1,15 +1,20 @@
-version: "3"
+version: "3.7"
 
 services:
-  # tdt-frontend:
-  #   image: tdt-frontend
-  #   build:
-  #     context: ./frontend
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   ports:
-  #     - "8080:8080"
+  tdt-frontend:
+    image: tdt-frontend
+    build:
+      context: ./frontend
+      args:
+        - PORT=${FRONTEND_PORT}
+    environment:
+      - NODE_ENV=development
+    command: npm run serve
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
 
   tdt-backend:
     image: tdt-backend
@@ -17,6 +22,11 @@ services:
       context: ./backend
       args:
         - PORT=${BACKEND_PORT}
+    environment:
+      - NODE_ENV=development
     command: npm run serve
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/public:/app/public
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"

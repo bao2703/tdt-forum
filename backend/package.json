@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "serve": "nodemon --exec babel-node src/server"
+    "serve": "nodemon --legacy-watch --exec babel-node src/server"
   },
   "dependencies": {
     "apollo-server-express": "^2.3.1",
