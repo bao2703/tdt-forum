@@ -24,4 +24,7 @@ const resolvers = {
   }
 };
 
-export default { typeDefs, resolvers };
+export default {
+  typeDefs,
+  resolvers
+};

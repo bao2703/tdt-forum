@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  # tdt-frontend:
+  #   image: tdt-frontend
+  #   build:
+  #     context: ./frontend
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - "8080:8080"
+
+  tdt-backend:
+    image: tdt-backend
+    build: 
+      context: ./backend
+      args:
+        - PORT=${BACKEND_PORT}
+    command: npm run serve
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
