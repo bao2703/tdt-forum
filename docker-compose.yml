@@ -24,9 +24,18 @@ services:
         - PORT=${BACKEND_PORT}
     environment:
       - NODE_ENV=development
+      - MONGO_PORT=${MONGO_PORT}
     command: npm run serve
     volumes:
       - ./backend/src:/app/src
       - ./backend/public:/app/public
+    depends_on:
+      - mongo
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
+
+  mongo:
+    image: mongo:4.1.6
+    command: mongod --port ${MONGO_PORT}
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
