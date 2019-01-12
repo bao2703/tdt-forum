@@ -11,12 +11,23 @@ const typeDefs = gql`
   extend type Query {
     users: [User]
   }
+
+  extend type Mutation {
+    createUser(username: String!, password: String!): User!
+  }
 `;
 
 const resolvers = {
   Query: {
     users: async () => {
       return await UserModel.find();
+    }
+  },
+
+  Mutation: {
+    createUser: async (_, { username, password }) => {
+      const user = await new UserModel({ username, password }).save();
+      return user;
     }
   }
 };
