@@ -6,21 +6,32 @@ const typeDefs = gql`
     id: ID
     username: String
     password: String
+    posts: [Post]
   }
 
   extend type Query {
-    users: [User]
+    getUsers: [User]
+    getUser(username: String!): User
   }
 
   extend type Mutation {
-    createUser(username: String!, password: String!): User!
+    createUser(username: String!, password: String!): User
   }
 `;
 
 const resolvers = {
+  User: {
+    posts: user => {
+      return [];
+    }
+  },
+
   Query: {
-    users: async () => {
+    getUsers: async () => {
       return await UserModel.find();
+    },
+    getUser: async (_, { username }) => {
+      return await UserModel.findOne({ username });
     }
   },
 

@@ -1,26 +1,45 @@
 import { gql } from 'apollo-server-express';
-import { authors, posts } from '../../data';
+import PostModel from '../../db/models/post';
 
 const typeDefs = gql`
   type Post {
-    id: Int!
+    id: ID
     title: String
-    votes: Int
-    author: Author
+    content: String
+    user: User
   }
 
   extend type Query {
-    posts: [Post]
+    getPosts: [Post]
+    getPost(title: String!): Post
+  }
+
+  extend type Mutation {
+    createPost(title: String!, content: String!): Post
   }
 `;
 
 const resolvers = {
   Post: {
-    author: post => authors.find(a => a.id === post.authorId)
+    user: post => {
+      return {};
+    }
   },
 
   Query: {
-    posts: () => posts
+    getPosts: async () => {
+      return await PostModel.find();
+    },
+    getPost: async (_, { title }) => {
+      return await UserModel.findOne({ title });
+    }
+  },
+
+  Mutation: {
+    createPost: async (_, { title, content }) => {
+      const post = await new PostModel({ title, content }).save();
+      return post;
+    }
   }
 };
 

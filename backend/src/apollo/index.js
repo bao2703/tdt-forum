@@ -1,5 +1,4 @@
 import { ApolloServer, gql } from 'apollo-server-express';
-import author from './schemas/author';
 import post from './schemas/post';
 import user from './schemas/user';
 
@@ -16,8 +15,8 @@ const rootTypeDefs = gql`
 const rootResolvers = {};
 
 const apollo = new ApolloServer({
-  typeDefs: [rootTypeDefs, author.typeDefs, post.typeDefs, user.typeDefs],
-  resolvers: [rootResolvers, author.resolvers, post.resolvers, user.resolvers]
+  typeDefs: [rootTypeDefs, post.typeDefs, user.typeDefs],
+  resolvers: [rootResolvers, post.resolvers, user.resolvers]
 });
 
 export default apollo;

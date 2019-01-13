@@ -37,5 +37,5 @@ services:
   mongo:
     image: mongo:4.1.6
     command: mongod --port ${MONGO_PORT}
-    ports:
-      - "${MONGO_PORT}:${MONGO_PORT}"
+    expose:
+      - "${MONGO_PORT}"
