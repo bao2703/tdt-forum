@@ -1,7 +1,7 @@
-import { createServer } from 'http';
-import { PORT } from './config';
-import app from './app';
-import './db';
+import { createServer } from "http";
+import { PORT } from "./config";
+import app from "./app";
+import "./db";
 
 const server = createServer(app);
 

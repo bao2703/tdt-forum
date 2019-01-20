@@ -1,6 +1,6 @@
-import { ApolloServer, gql } from 'apollo-server-express';
-import post from './schemas/post';
-import user from './schemas/user';
+import { ApolloServer, gql } from "apollo-server-express";
+import post from "./schemas/post";
+import user from "./schemas/user";
 
 const rootTypeDefs = gql`
   type Query {

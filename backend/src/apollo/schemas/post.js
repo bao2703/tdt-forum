@@ -1,5 +1,5 @@
-import { gql } from 'apollo-server-express';
-import PostModel from '../../db/models/post';
+import { gql } from "apollo-server-express";
+import PostModel from "../../db/models/post";
 
 const typeDefs = gql`
   type Post {

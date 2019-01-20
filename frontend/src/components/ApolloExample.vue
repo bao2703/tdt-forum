@@ -1,6 +1,6 @@
 <template>
   <div>
-    <apollo-query :query="require('@/graphql/users.gql')">
+    <apollo-query :query="require('@/apollo/graphql/users.gql')">
       <template slot-scope="{ result: { data, loading } }">
         <div v-if="loading">Loading...</div>
         <div v-else-if="data">
@@ -17,7 +17,9 @@
 import gql from "graphql-tag";
 
 export default {
-  data: () => ({}),
+  data() {
+    return {};
+  },
 
   apollo: {
     user: gql`
