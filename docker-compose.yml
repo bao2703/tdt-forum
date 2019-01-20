@@ -9,7 +9,7 @@ services:
         - PORT=${FRONTEND_PORT}
     environment:
       - NODE_ENV=development
-    command: npm run serve
+    command: yarn run serve
     volumes:
       - ./frontend/src:/app/src
       - ./frontend/public:/app/public
@@ -25,7 +25,7 @@ services:
     environment:
       - NODE_ENV=development
       - MONGO_PORT=${MONGO_PORT}
-    command: npm run serve
+    command: yarn run serve
     volumes:
       - ./backend/src:/app/src
       - ./backend/public:/app/public

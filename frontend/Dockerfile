@@ -7,8 +7,9 @@ ENV PORT=${PORT}
 WORKDIR /app
 
 COPY package*.json ./
+COPY yarn.* ./
 
-RUN npm install
+RUN yarn install
 
 COPY . .
 

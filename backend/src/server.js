@@ -6,5 +6,5 @@ import './db';
 const server = createServer(app);
 
 server.listen(PORT, () =>
-  console.log(`Magic happens on http://localhost:${PORT}`)
+  console.log(`\n\tMagic happens on: http://localhost:${PORT}\n`)
 );
