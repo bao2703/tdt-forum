@@ -37,5 +37,10 @@ services:
   mongo:
     image: mongo:4.1.6
     command: mongod --port ${MONGO_PORT}
+    volumes:
+       - data:/data/db
     expose:
       - "${MONGO_PORT}"
+
+volumes:
+  data:

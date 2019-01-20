@@ -10,8 +10,8 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    getUsers: [User]
-    getUser(username: String!): User
+    users: [User]
+    user(username: String!): User
   }
 
   extend type Mutation {
@@ -27,10 +27,10 @@ const resolvers = {
   },
 
   Query: {
-    getUsers: async () => {
+    users: async () => {
       return await UserModel.find();
     },
-    getUser: async (_, { username }) => {
+    user: async (_, { username }) => {
       return await UserModel.findOne({ username });
     }
   },

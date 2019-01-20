@@ -10,8 +10,8 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    getPosts: [Post]
-    getPost(title: String!): Post
+    posts: [Post]
+    post(title: String!): Post
   }
 
   extend type Mutation {
@@ -27,10 +27,10 @@ const resolvers = {
   },
 
   Query: {
-    getPosts: async () => {
+    posts: async () => {
       return await PostModel.find();
     },
-    getPost: async (_, { title }) => {
+    post: async (_, { title }) => {
       return await UserModel.findOne({ title });
     }
   },
