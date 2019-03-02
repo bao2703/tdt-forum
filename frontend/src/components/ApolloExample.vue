@@ -24,7 +24,7 @@ export default {
   apollo: {
     user: gql`
       query {
-        user(username: "1") {
+        user(username: "abc") {
           id
           username
           password

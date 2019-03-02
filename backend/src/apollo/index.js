@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from "apollo-server-express";
 import post from "./schemas/post";
 import user from "./schemas/user";
+import auth from "./schemas/auth";
 
 const rootTypeDefs = gql`
   type Query {
@@ -15,8 +16,8 @@ const rootTypeDefs = gql`
 const rootResolvers = {};
 
 const apollo = new ApolloServer({
-  typeDefs: [rootTypeDefs, post.typeDefs, user.typeDefs],
-  resolvers: [rootResolvers, post.resolvers, user.resolvers]
+  typeDefs: [rootTypeDefs, post.typeDefs, user.typeDefs, auth.typeDefs],
+  resolvers: [rootResolvers, post.resolvers, user.resolvers, auth.resolvers]
 });
 
 export default apollo;

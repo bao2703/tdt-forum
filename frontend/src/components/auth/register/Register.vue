@@ -53,7 +53,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { register } from "@/store/account/actions";
+import { Actions } from "@/store/auth/actions";
 
 export default {
   components: {},
@@ -86,7 +86,7 @@ export default {
     handleRegister() {
       if (!this.$refs.form.validate()) return;
 
-      this.toggleLoading();
+      this.toggleLoading(true);
 
       let { email, password, confirmPassword } = this;
 
@@ -96,15 +96,18 @@ export default {
       }
 
       this.$store
-        .dispatch(register, { username: email, password })
-        .then(() => this.toggleLoading())
+        .dispatch(Actions.REGISTER, { username: email, password })
+        .then(() => {
+          this.toggleLoading(false);
+          this.$router.push({ name: "login" });
+        })
         .catch(error => {
-          this.error = error.response.data.message;
-          this.toggleLoading();
+          this.error = error;
+          this.toggleLoading(false);
         });
     },
-    toggleLoading() {
-      this.loading = !this.loading;
+    toggleLoading(isOn) {
+      this.loading = isOn;
     }
   }
 };

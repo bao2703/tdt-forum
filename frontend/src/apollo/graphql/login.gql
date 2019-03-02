@@ -1,5 +1,5 @@
-query($username: String!, $password: String!) {
-  user(username: $username, password: $password) {
+mutation($username: String!, $password: String!) {
+  login(username: $username, password: $password) {
     username
     password
   }

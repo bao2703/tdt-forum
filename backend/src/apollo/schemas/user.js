@@ -37,6 +37,9 @@ const resolvers = {
 
   Mutation: {
     createUser: async (_, { username, password }) => {
+      await new Promise(resolve => {
+        setTimeout(resolve, 2000);
+      });
       const user = await new UserModel({ username, password }).save();
       return user;
     }

@@ -1,5 +1,5 @@
 mutation($username: String!, $password: String!) {
-  createUser(username: $username, password: $password) {
+  register(username: $username, password: $password) {
     username
     password
   }

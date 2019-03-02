@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import account from "./account";
+import account from "./auth";
 
 Vue.use(Vuex);
 
